@@ -8,7 +8,7 @@ export interface ICounterProps {
 }
 
 @observer
-export class Counter extends React.Component<any, ICounterProps> {
+export class Counter extends React.Component<ICounterProps> {
     render() {
         return (
             <div>

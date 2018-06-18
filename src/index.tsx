@@ -3,14 +3,13 @@ import * as ReactDOM from "react-dom";
 
 import DevTools from "mobx-react-devtools";
 
-import Counter from "./Counter";
-
-import { counterStore } from "./counter.store";
+import Temperature from "./temperature/Temperature";
+import { store } from "./temperature/temperature.store";
 
 ReactDOM.render(
     <div>
         <DevTools />
-        <Counter store={counterStore} />
+        <Temperature store={store} />
     </div>,
     document.getElementById("app"),
 );
