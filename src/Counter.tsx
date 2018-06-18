@@ -1,26 +1,21 @@
 import * as React from "react";
-import { observable } from "mobx";
+// import { observable } from "mobx";
 import { observer } from "mobx-react";
+import { ICounterStore } from "./counter.store";
+
+export interface ICounterProps {
+    store: ICounterStore;
+}
 
 @observer
-export class Counter extends React.Component<any, any> {
-    @observable count: number = 0;
-
-    onDecrement = () => {
-        this.count--;
-    };
-
-    onIncrement = () => {
-        this.count++;
-    };
-
+export class Counter extends React.Component<any, ICounterProps> {
     render() {
         return (
             <div>
-                Counter: {this.count}
+                Counter: {this.props.store.count}
                 <br />
-                <button onClick={this.onDecrement}>-</button>
-                <button onClick={this.onIncrement}>+</button>
+                <button onClick={this.props.store.decrement}>-</button>
+                <button onClick={this.props.store.increment}>+</button>
             </div>
         );
     }

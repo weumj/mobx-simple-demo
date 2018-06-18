@@ -3,4 +3,9 @@ import * as ReactDOM from "react-dom";
 
 import Counter from "./Counter";
 
-ReactDOM.render(<Counter />, document.getElementById("app"));
+import { counterStore } from "./counter.store";
+
+ReactDOM.render(
+    <Counter store={counterStore} />,
+    document.getElementById("app"),
+);
