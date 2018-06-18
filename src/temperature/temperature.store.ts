@@ -1,6 +1,7 @@
 import { computed, observable } from "mobx";
 
 export class TemperatureStore {
+    id = Math.random();
     @observable unit = "C";
     @observable temperatureCelsius = 25;
 
@@ -29,5 +30,3 @@ export class TemperatureStore {
         }
     }
 }
-
-export const store = new TemperatureStore();
