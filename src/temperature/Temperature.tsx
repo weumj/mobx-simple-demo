@@ -25,23 +25,50 @@ export class Temperature extends React.Component<TemperatureProps> {
     onInc = () => {
         this.props.store.increment();
     };
+    unitTypeIs(unit: string) {
+        return this.props.store.unit === unit;
+    }
+    generateButtonStyle(unit: string) {
+        return this.unitTypeIs(unit) ? { fontSize: "medium" } : {};
+    }
     render() {
+        const {
+            store: { location, loading, temperature, temperatureCelsius },
+        } = this.props;
         return (
-            <div>
+            <span>
                 <span>
-                    <button onClick={this.onC}>C</button>
-                    <button onClick={this.onK}>K</button>
-                    <button onClick={this.onF}>F</button>
-                    <button onClick={this.onInc}>+</button>
+                    {location} : {loading ? "loading..." : temperature}
                 </span>
+                <div>
+                    <span>Type : </span>
+                    <button
+                        style={this.generateButtonStyle("C")}
+                        onClick={this.onC}
+                    >
+                        C
+                    </button>
+                    <button
+                        style={this.generateButtonStyle("K")}
+                        onClick={this.onK}
+                    >
+                        K
+                    </button>
+                    <button
+                        style={this.generateButtonStyle("F")}
+                        onClick={this.onF}
+                    >
+                        F
+                    </button>
+                </div>
+                <button onClick={this.onInc}>+</button>
                 <input
                     type="number"
                     onChange={this.onChange}
-                    value={this.props.store.temperatureCelsius}
+                    value={temperatureCelsius}
                 />{" "}
-                C
-                <div>{this.props.store.temperature}</div>
-            </div>
+                ºC
+            </span>
         );
     }
 }
