@@ -11,16 +11,19 @@ export interface TemperatureProps {
 @observer
 export class Temperature extends React.Component<TemperatureProps> {
     onK = () => {
-        this.props.store.unit = "K";
+        this.props.store.setUnit("K");
     };
     onC = () => {
-        this.props.store.unit = "C";
+        this.props.store.setUnit("C");
     };
     onF = () => {
-        this.props.store.unit = "F";
+        this.props.store.setUnit("F");
     };
     onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        this.props.store.temperatureCelsius = parseInt(e.target.value, 10);
+        this.props.store.setCelsius(parseInt(e.target.value, 10));
+    };
+    onInc = () => {
+        this.props.store.increment();
     };
     render() {
         return (
@@ -29,6 +32,7 @@ export class Temperature extends React.Component<TemperatureProps> {
                     <button onClick={this.onC}>C</button>
                     <button onClick={this.onK}>K</button>
                     <button onClick={this.onF}>F</button>
+                    <button onClick={this.onInc}>+</button>
                 </span>
                 <input
                     type="number"

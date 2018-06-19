@@ -1,4 +1,4 @@
-import { computed, observable } from "mobx";
+import { action, computed, observable } from "mobx";
 
 export class TemperatureStore {
     id = Math.random();
@@ -28,5 +28,26 @@ export class TemperatureStore {
             case "C":
                 return this.temperatureCelsius + "ºC";
         }
+    }
+
+    @action
+    setUnit(newUnit: string) {
+        this.unit = newUnit;
+    }
+
+    @action
+    setCelsius(degrees: number) {
+        this.temperatureCelsius = degrees;
+    }
+
+    @action("update temperature and unit")
+    setTemperatureAndUnit(degrees: number, unit: string) {
+        this.setCelsius(degrees);
+        this.setUnit(unit);
+    }
+
+    @action
+    increment() {
+        this.setCelsius(this.temperatureCelsius + 1);
     }
 }

@@ -5,8 +5,10 @@ import DevTools from "mobx-react-devtools";
 
 import Temperature from "./temperature/Temperature";
 import { TemperatureStore } from "./temperature/temperature.store";
-import { observable, ObservableMap } from "mobx";
+import { observable, ObservableMap, configure } from "mobx";
 import { observer } from "mobx-react";
+
+configure({ enforceActions: true });
 
 const stores: ObservableMap<string, TemperatureStore> = observable.map({
     a: new TemperatureStore(),
