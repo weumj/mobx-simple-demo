@@ -1,1 +1,1 @@
-import "./temperature";
+import "./temperature/autorun";
